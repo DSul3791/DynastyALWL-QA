@@ -1,9 +1,18 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Questions for Dave</title>
-<style>body{font:22px system-ui,sans-serif;padding:16px;background:#161616;color:#eee}</style></head>
-<body><p id="m">Loading...</p>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Questions for Dave</title>
+<style>body{font:18px system-ui,sans-serif;padding:16px;background:#f4f1ea;color:#1d1d1f;max-width:34rem;margin:auto}input{width:100%;font:inherit;padding:.6rem;box-sizing:border-box}button{font:inherit;min-height:48px;padding:.5rem 1.2rem;margin-top:.6rem;border:0;border-radius:12px;background:#7a1f1f;color:#fff}.e{color:#b00020}@media(prefers-color-scheme:dark){body{background:#141416;color:#ecebe8}input{background:#1f1f22;color:#ecebe8}}</style></head>
+<body><div id="m">Loading...</div>
 <script>
-fetch("https://raw.githubusercontent.com/DSul3791/DynastyALWL/claude/generator-v2/questions/qa.html?t="+Date.now())
-.then(function(r){if(!r.ok)throw new Error(r.status);return r.text()})
-.then(function(h){document.open();document.write(h);document.close()})
-.catch(function(e){document.getElementById("m").textContent="Could not load the page ("+e.message+"). Refresh."});
+// Stub v2: works while the main repo is public OR private. It carries no secrets: it reads the token from this browser and loads the real page from the main repo through the GitHub API.
+var REPO="DSul3791/DynastyALWL",BR="claude/generator-v2",m=document.getElementById("m");
+function tok(){try{return localStorage.getItem("ghtok")||""}catch(e){return ""}}
+function ask(){m.innerHTML='<p>Paste your GitHub token (once):</p><input id="t" type="password" autocomplete="off"><button id="b">Remember</button>';
+  document.getElementById("b").onclick=function(){try{localStorage.setItem("ghtok",document.getElementById("t").value.trim())}catch(e){}go()}}
+function go(){
+  if(!tok()){ask();return}
+  fetch("https://api.github.com/repos/"+REPO+"/contents/questions/qa.html?ref="+BR+"&t="+Date.now(),{headers:{Authorization:"Bearer "+tok(),Accept:"application/vnd.github.raw"},cache:"no-store"})
+  .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.text()})
+  .then(function(h){document.open();document.write(h);document.close()})
+  .catch(function(e){m.innerHTML='<p class="e">Could not load the page ('+e.message+'). If it says 401 or 404 the token is wrong or lacks access to DynastyALWL.</p><button id="b">Enter token again</button>';
+    document.getElementById("b").onclick=function(){try{localStorage.removeItem("ghtok")}catch(x){}ask()}})}
+go();
 </script></body></html>
