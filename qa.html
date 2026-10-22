@@ -2,7 +2,8 @@
 <style>body{font:18px system-ui,sans-serif;padding:16px;background:#f4f1ea;color:#1d1d1f;max-width:34rem;margin:auto}input{width:100%;font:inherit;padding:.6rem;box-sizing:border-box}button{font:inherit;min-height:48px;padding:.5rem 1.2rem;margin-top:.6rem;border:0;border-radius:12px;background:#7a1f1f;color:#fff}.e{color:#b00020}@media(prefers-color-scheme:dark){body{background:#141416;color:#ecebe8}input{background:#1f1f22;color:#ecebe8}}</style></head>
 <body><div id="m">Loading...</div>
 <script>
-// Stub v2: works while the main repo is public OR private. It carries no secrets: it reads the token from this browser and loads the real page from the main repo through the GitHub API.
+(function(){
+// Stub v3 (no globals: the real page declares const REPO, tok and others, so the stub must not leave any behind). Works while the main repo is public OR private. It carries no secrets: it reads the token from this browser and loads the real page from the main repo through the GitHub API.
 var REPO="DSul3791/DynastyALWL",BR="claude/generator-v2",m=document.getElementById("m");
 function tok(){try{return localStorage.getItem("ghtok")||""}catch(e){return ""}}
 function ask(){m.innerHTML='<p>Paste your GitHub token (once):</p><input id="t" type="password" autocomplete="off"><button id="b">Remember</button>';
@@ -15,4 +16,5 @@ function go(){
   .catch(function(e){m.innerHTML='<p class="e">Could not load the page ('+e.message+'). If it says 401 or 404 the token is wrong or lacks access to DynastyALWL.</p><button id="b">Enter token again</button>';
     document.getElementById("b").onclick=function(){try{localStorage.removeItem("ghtok")}catch(x){}ask()}})}
 go();
+})();
 </script></body></html>
