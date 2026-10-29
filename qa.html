@@ -4,7 +4,7 @@
 <script>
 (function(){
 // Stub v3 (no globals: the real page declares const REPO, tok and others, so the stub must not leave any behind). Works while the main repo is public OR private. It carries no secrets: it reads the token from this browser and loads the real page from the main repo through the GitHub API.
-var REPO="DSul3791/DynastyALWL",BR="claude/generator-v2",m=document.getElementById("m");
+var REPO="DSul3791/DynastyALWL",BR="qa",m=document.getElementById("m");
 function tok(){try{return localStorage.getItem("ghtok")||""}catch(e){return ""}}
 function ask(){m.innerHTML='<p>Paste your GitHub token (once):</p><input id="t" type="password" autocomplete="off"><button id="b">Remember</button>';
   document.getElementById("b").onclick=function(){try{localStorage.setItem("ghtok",document.getElementById("t").value.trim())}catch(e){}go()}}
