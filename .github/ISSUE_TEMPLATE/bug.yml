@@ -1,0 +1,64 @@
+name: Bug
+description: Something in Dynasty went wrong, broke, or did not do what you expected.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing Dynasty. In the game, **Esc > Settings > Report a problem** opens this form with your build number filled in and opens the folder with your log.
+  - type: input
+    id: build
+    attributes:
+      label: Build
+      description: The build number shown on the title page and the server page (for example "Build 8883"). Filled in for you when you come from the game.
+      placeholder: Build 8883
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you saw, in your own words.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: false
+  - type: textarea
+    id: steps
+    attributes:
+      label: How can we make it happen again?
+      description: The steps, if you know them. "It just happened while walking" is fine too.
+      placeholder: |
+        1. I picked up stones by the river
+        2. I opened the inventory with I
+        3. The game froze
+    validations:
+      required: false
+  - type: input
+    id: where
+    attributes:
+      label: Where and when
+      description: The server you played on, roughly where you were in the world, and the time (with your time zone).
+    validations:
+      required: false
+  - type: textarea
+    id: log
+    attributes:
+      label: Your game log
+      description: |
+        Drag the newest file from your log folder into this box (in the game, Esc > Settings > Report a problem saves a report file with the end of the log and opens its folder).
+        On Windows it is %APPDATA%\Godot\app_userdata\Dynasty a life well lived\logs\godot.log. If the game crashed, also drag in the newest file from the crash_reports folder next to it, and any report made by Report a problem (reports folder).
+    validations:
+      required: false
+  - type: textarea
+    id: pictures
+    attributes:
+      label: Screenshots or a video
+      description: Drag pictures or a short video here if you have them.
+    validations:
+      required: false
