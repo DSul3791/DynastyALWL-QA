@@ -1,0 +1,26 @@
+name: Idea
+description: Something you would like to see in Dynasty, or a change that would make it better.
+title: "[Idea] "
+labels: ["idea"]
+body:
+  - type: input
+    id: build
+    attributes:
+      label: Build
+      description: The build number shown on the title page (for example "Build 8883"). Filled in for you when you come from the game.
+      placeholder: Build 8883
+    validations:
+      required: false
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would it help?
+      description: What it would make better or easier.
+    validations:
+      required: false
