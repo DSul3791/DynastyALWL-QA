@@ -6,12 +6,12 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for testing Dynasty. In the game, **Esc > Settings > Report a problem** opens this form with your build number filled in and opens the folder with your log.
+        Thanks for testing Dynasty. Problems are reported here on GitHub; there is no reporting from inside the game.
   - type: input
     id: build
     attributes:
       label: Build
-      description: The build number shown on the title page and the server page (for example "Build 8883"). Filled in for you when you come from the game.
+      description: The build number shown on the title page and the server page (for example "Build 8883").
       placeholder: Build 8883
     validations:
       required: true
@@ -51,8 +51,8 @@ body:
     attributes:
       label: Your game log
       description: |
-        Drag the newest file from your log folder into this box (in the game, Esc > Settings > Report a problem saves a report file with the end of the log and opens its folder).
-        On Windows it is %APPDATA%\Godot\app_userdata\Dynasty a life well lived\logs\godot.log. If the game crashed, also drag in the newest file from the crash_reports folder next to it, and any report made by Report a problem (reports folder).
+        Drag the newest file from your log folder into this box.
+        On Windows it is %APPDATA%\Godot\app_userdata\Dynasty a life well lived\logs\godot.log. If the game crashed, also drag in the newest file from the crash_reports folder (in the same place as the logs folder, or in the game's own folder).
     validations:
       required: false
   - type: textarea
