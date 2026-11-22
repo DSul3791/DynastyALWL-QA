@@ -7,7 +7,7 @@ body:
     id: build
     attributes:
       label: Build
-      description: The build number shown on the title page (for example "Build 8883"). Filled in for you when you come from the game.
+      description: The build number shown on the title page (for example "Build 8883").
       placeholder: Build 8883
     validations:
       required: false
